@@ -19,7 +19,7 @@ def convertTimestamps(infile, outfile):
         duplicate[2] = round(time, 2)
         writer.writerow(duplicate)
 
-def convertToOtherClasses(infile, outfile, numOther):
+def convertToOtherClasses(infile, outfile, numOther, otherName="Other"):
 
   counter = {}
   with open(infile) as csv_file:
@@ -54,9 +54,10 @@ def convertToOtherClasses(infile, outfile, numOther):
 
         duplicate = row.copy()
         if duplicate[20] not in keep_names:
-          duplicate[20] = 'Other'
+          duplicate[20] = otherName
 
         writer.writerow(duplicate)
 
 #convertTimestamps('./data/ExplicitClasses.csv', './data/DataV1.csv')
-convertToOtherClasses('./data/DataV1.csv', './data/DataV2.csv', 20)
+#convertToOtherClasses('./data/DataV1.csv', './data/DataV2.csv', 20)
+convertToOtherClasses('./data/DataV5.csv', './data/DataV6.csv', 20, 152)
